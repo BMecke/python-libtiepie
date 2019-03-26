@@ -182,4 +182,5 @@ class DeviceList(object):
 
     count = property(_get_count)
 
+
 device_list = DeviceList()

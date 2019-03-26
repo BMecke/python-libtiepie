@@ -144,4 +144,5 @@ class Library(object):
     last_status_str = property(_get_last_status_str)
     config_str = property(_get_config_str)
 
+
 library = Library()

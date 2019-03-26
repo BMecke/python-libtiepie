@@ -81,6 +81,7 @@ class ObjectGoneError(LibTiePieException):
     def __init__(self):
         super(ObjectGoneError, self).__init__(ObjectGoneError, 'Object gone')
 
+
 DeviceGoneError = ObjectGoneError
 
 
