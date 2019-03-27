@@ -24,7 +24,7 @@ for item in libtiepie.device_list:
     if item.can_open(libtiepie.DEVICETYPE_OSCILLOSCOPE):
         scp = item.open_oscilloscope()
         if (scp.measure_modes & libtiepie.MM_BLOCK) and (scp.segment_count_max > 1):
-             break
+            break
         else:
             scp = None
 
@@ -99,7 +99,7 @@ if scp:
 
         # Get all data from the scope:
         while scp.is_data_ready:
-          data.append(scp.get_data()[0])  # only collect data from Ch 1
+            data.append(scp.get_data()[0])  # only collect data from Ch 1
 
         # Output CSV data:
         csv_file = open('OscilloscopeBlockSegmented.csv', 'w')
