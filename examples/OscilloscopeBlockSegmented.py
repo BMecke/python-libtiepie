@@ -43,7 +43,7 @@ if scp:
         scp.pre_sample_ratio = 0  # 0 %
 
         # Set number of segments:
-        scp.segment_count = 5 # 5 segments
+        scp.segment_count = 5  # 5 segments
 
         # For all channels:
         for ch in scp.channels:
