@@ -28,17 +28,17 @@ def print_device_info(dev, full=True):
     print('  Serial number             : ' + str(dev.serial_number))
     try:
         print('  Calibration date          : {0:%Y-%m-%d}'.format(dev.calibration_date))
-    except:
+    except LibTiePieException:
         pass
     print('  Product id                : ' + str(dev.product_id))
     print('  Vendor id                 : ' + str(dev.vendor_id))
     try:
         print('  Driver version            : ' + str(dev.driver_version))
-    except:
+    except LibTiePieException:
         pass
     try:
         print('  Firmware version          : ' + str(dev.firmware_version))
-    except:
+    except LibTiePieException:
         pass
 
     if full:
@@ -69,14 +69,14 @@ def print_oscilloscope_info(scp):
     try:
         print('  Clock output frequecies   : ' + ', '.join(map(str, scp.clock_output_frequencies)))
         print('  Clock output frequency    : ' + str(scp.clock_output_frequency))
-    except:
+    except LibTiePieException:
         pass
     print('  Clock sources             : ' + clock_source_str(scp.clock_sources))
     print('  Clock source              : ' + clock_source_str(scp.clock_source))
     try:
         print('  Clock source frequecies   : ' + ', '.join(map(str, scp.clock_source_frequencies)))
         print('  Clock source frequency    : ' + str(scp.clock_source_frequency))
-    except:
+    except LibTiePieException:
         pass
 
     print('  Record length max         : ' + str(scp.record_length_max))
