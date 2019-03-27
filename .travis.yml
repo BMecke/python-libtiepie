@@ -1,13 +1,21 @@
 dist: xenial
 language: python
 python:
-  - "2.7"
-  - "3.4"
-  - "3.5"
-  - "3.6"
-  - "3.7"
+- '2.7'
+- '3.4'
+- '3.5'
+- '3.6'
+- '3.7'
 before_install:
-  - pip install pep8
+- pip install pep8
 script:
-  - find . -name \*.py -exec pep8 --ignore=E501 {} +
-  - ./setup.py install
+- find . -name \*.py -exec pep8 --ignore=E501 {} +
+- "./setup.py install"
+deploy:
+  provider: pypi
+  user: tiepie
+  password:
+    secure: fhf/KNRlGFW8fiVVoo/Z7ehmv9tXogS3MOHX113+n+vaF/lA3jtLJeivWVzAtTwg0lJa64d0AIpRAXOdDo6Trjp1k+o/rusfsbtsoq99N3r1fh9BMVS2APbX4BxDywZcSHYB1vX+HlrBK1+RuHuO25RosdvIUgqsHGHDly9CPhr7cV0YQWtDrO3MXi3vzmDjRC74QkouVWMpG3FTwCxZtZ6J005/07KPXKEXaCCyUUyGePRoS7B8JIZI1fEHBU6jUpfAmjtSUIDQHzPlZkTaYOdkEThulelPY51dprHwZwPniIRyShZ41LpEMs+ZKiXbdxizbD9cAYxStyu0heob4ThkRcrwxZj6kgKQFWOrKhXniFT1O5vha/VcQyE5JPX/BPEwN3QY1uls2lDfZlUVvhAqh9w5jax2DyvIkBZrnharH0wlBTE4dHU3YXbtHbiddlcf2dyuNjSZ4WOht+d+0u20jHD9BWVNrpsrP9+AI+jdXxgcbkKMkgQOi8EfJcfTacmGLhyQ8g1Wn5+2BtQk2kWpY7NJsAgcxQt13UG3YpLDhd57ddp5knuMoWNwf37kOYF3VmKVNsjVPmv7iQo/lhgNIfj96lLAK+fWxjXpAuyQkMb4aIQaajUJ7kr4EEpMxTg34UGaD0Xy0CSgU8+5CAo4Pts3ob0DNr1ZAmPyPOc=
+  on:
+    tags: true
+    python: '2.7'
