@@ -7,10 +7,10 @@ python:
 - '3.6'
 - '3.7'
 before_install:
-- pip install pep8
+- pip install pycodestyle
 script:
-- find . -name \*.py -exec pep8 --ignore=E501 {} +
-- "./setup.py install"
+- pycodestyle --ignore=E501 .
+- "python setup.py install"
 deploy:
   provider: pypi
   user: tiepie
