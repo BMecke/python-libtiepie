@@ -1,4 +1,4 @@
-# OscilloscopeStream.py - for LibTiePie 0.5+
+# OscilloscopeStream.py
 #
 # This example performs a stream mode measurement and writes the data to OscilloscopeStream.csv.
 #
@@ -13,6 +13,9 @@ from printinfo import *
 
 # Print library info:
 print_library_info()
+
+# Enable network search:
+libtiepie.network.auto_detect_enabled = True
 
 # Search for devices:
 libtiepie.device_list.update()

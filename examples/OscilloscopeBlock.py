@@ -1,4 +1,4 @@
-# OscilloscopeBlock.py - for LibTiePie 0.5+
+# OscilloscopeBlock.py
 #
 # This example performs a block mode measurement and writes the data to OscilloscopeBlock.csv.
 #
@@ -13,6 +13,9 @@ from printinfo import *
 
 # Print library info:
 print_library_info()
+
+# Enable network search:
+libtiepie.network.auto_detect_enabled = True
 
 # Search for devices:
 libtiepie.device_list.update()

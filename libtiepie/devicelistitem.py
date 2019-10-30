@@ -7,6 +7,7 @@ from .exceptions import InvalidValueError
 from .oscilloscope import Oscilloscope
 from .generator import Generator
 from .i2chost import I2CHost
+from .server import Server
 
 
 class DeviceListItem(object):
@@ -137,6 +138,30 @@ class DeviceListItem(object):
         library.check_last_status_raise_on_error()
         return value
 
+    def _get_ipv4_address(self):
+        """ IPv4 address. """
+        value = api.LstDevGetIPv4Address(IDKIND_SERIALNUMBER, self._serial_number)
+        library.check_last_status_raise_on_error()
+        return value
+
+    def _get_ip_port(self):
+        """ IP port number. """
+        value = api.LstDevGetIPPort(IDKIND_SERIALNUMBER, self._serial_number)
+        library.check_last_status_raise_on_error()
+        return value
+
+    def _get_has_server(self):
+        """ Check whether the listed device is connected to a server. """
+        value = api.LstDevHasServer(IDKIND_SERIALNUMBER, self._serial_number)
+        library.check_last_status_raise_on_error()
+        return value != BOOL8_FALSE
+
+    def _get_server(self):
+        """ Server handle of the server the listed device is connected to. """
+        value = api.LstDevGetServer(IDKIND_SERIALNUMBER, self._serial_number)
+        library.check_last_status_raise_on_error()
+        return Server(value)
+
     def _get_types(self):
         """ Device types. """
         value = api.LstDevGetTypes(IDKIND_SERIALNUMBER, self._serial_number)
@@ -163,5 +188,9 @@ class DeviceListItem(object):
     recommended_firmware_version = property(_get_recommended_firmware_version)
     calibration_date = property(_get_calibration_date)
     serial_number = property(_get_serial_number)
+    ipv4_address = property(_get_ipv4_address)
+    ip_port = property(_get_ip_port)
+    has_server = property(_get_has_server)
+    server = property(_get_server)
     types = property(_get_types)
     contained_serial_numbers = property(_get_contained_serial_numbers)

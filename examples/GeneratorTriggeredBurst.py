@@ -1,4 +1,4 @@
-# GeneratorGatedBurst.py - for LibTiePie 0.5+
+# GeneratorGatedBurst.py
 #
 # This example generates a 100 kHz square waveform, 25% duty cycle, 0..5 V, 20 periods, this waveform is triggered by the external trigger (EXT 1).
 # Connect EXT 1 to GND to trigger the burst.
@@ -12,6 +12,9 @@ from printinfo import *
 
 # Print library info:
 print_library_info()
+
+# Enable network search:
+libtiepie.network.auto_detect_enabled = True
 
 # Search for devices:
 libtiepie.device_list.update()

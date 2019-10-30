@@ -1,4 +1,4 @@
-# OscilloscopeCombineHS3HS4.py - for LibTiePie 0.6+
+# OscilloscopeCombineHS3HS4.py
 #
 # This example demonstrates how to create and open a combined instrument of all found Handyscope HS3, Handyscope HS4 and/or Handyscope HS4 DIFF's.
 #

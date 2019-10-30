@@ -83,6 +83,18 @@ class Library(object):
             raise InvalidHS56CombinedDeviceError()
         elif status == STATUS_MEASUREMENT_RUNNING:
             raise MeasurementRunningError()
+        elif status == STATUS_INITIALIZATION_ERROR_10001:
+            raise InitializationError10001()
+        elif status == STATUS_INITIALIZATION_ERROR_10002:
+            raise InitializationError10002()
+        elif status == STATUS_INITIALIZATION_ERROR_10003:
+            raise InitializationError10003()
+        elif status == STATUS_INITIALIZATION_ERROR_10004:
+            raise InitializationError10004()
+        elif status == STATUS_INITIALIZATION_ERROR_10005:
+            raise InitializationError10005()
+        elif status == STATUS_INITIALIZATION_ERROR_10006:
+            raise InitializationError10006()
         else:
             raise LibTiePieException(status, self.last_status_str)
 
@@ -102,6 +114,9 @@ class Library(object):
         elif interfaces == INTERFACE_DEVICE:
             from .device import Device
             return Device(handle)
+        elif interfaces == INTERFACE_SERVER:
+            from .server import Server
+            return Server(handle)
         else:
             raise InvalidValueError()
 

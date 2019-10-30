@@ -1,4 +1,4 @@
-# OscilloscopeGeneratorTrigger.py - for LibTiePie 0.5+
+# OscilloscopeGeneratorTrigger.py
 #
 # This example sets up the generator to generate a 1 kHz triangle waveform, 4 Vpp.
 # It also sets up the oscilloscope to perform a block mode measurement, triggered on "Generator new period".
@@ -15,6 +15,9 @@ from printinfo import *
 
 # Print library info:
 print_library_info()
+
+# Enable network search:
+libtiepie.network.auto_detect_enabled = True
 
 # Search for devices:
 libtiepie.device_list.update()

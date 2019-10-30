@@ -76,7 +76,7 @@ class Generator(Device):
         return value
 
     def _get_output_on(self):
-        """ Check whether the output is enabled """
+        """ Check whether a specified generator is enabled """
         value = api.GenGetOutputOn(self._handle)
         library.check_last_status_raise_on_error()
         return value != BOOL8_FALSE
@@ -676,7 +676,7 @@ class Generator(Device):
     def verify_burst_segment_count(self, burst_segment_count):
         """ Verify if a burst segment count can be set, without actually setting the hardware itself.
 
-        :param burst_segment_count:
+        :param burst_segment_count: The requested burst segment count.
         :returns: The burst segment count that would have been set.
         """
         result = api.GenVerifyBurstSegmentCount(self._handle, burst_segment_count)

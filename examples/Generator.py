@@ -1,4 +1,4 @@
-# Generator.py - for LibTiePie 0.5+
+# Generator.py
 #
 # This example generates a 100 kHz triangle waveform, 4 Vpp.
 #
@@ -11,6 +11,9 @@ from printinfo import *
 
 # Print library info:
 print_library_info()
+
+# Enable network search:
+libtiepie.network.auto_detect_enabled = True
 
 # Search for devices:
 libtiepie.device_list.update()

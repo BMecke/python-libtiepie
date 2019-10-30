@@ -54,6 +54,18 @@ class Device(Object):
         library.check_last_status_raise_on_error()
         return value
 
+    def _get_ipv4_address(self):
+        """ IPv4 address of the device. """
+        value = api.DevGetIPv4Address(self._handle)
+        library.check_last_status_raise_on_error()
+        return value
+
+    def _get_ip_port(self):
+        """ IP port number of the device. """
+        value = api.DevGetIPPort(self._handle)
+        library.check_last_status_raise_on_error()
+        return value
+
     def _get_product_id(self):
         """ Product id of the device. """
         value = api.DevGetProductId(self._handle)
@@ -99,6 +111,48 @@ class Device(Object):
         library.check_last_status_raise_on_error()
         return buf.value.decode('utf-8')
 
+    def _get_has_battery(self):
+        """ Check whether the device has a battery. """
+        value = api.DevHasBattery(self._handle)
+        library.check_last_status_raise_on_error()
+        return value != BOOL8_FALSE
+
+    def _get_battery_charge(self):
+        """ Get battery charge in percent. """
+        value = api.DevGetBatteryCharge(self._handle)
+        library.check_last_status_raise_on_error()
+        return value
+
+    def _get_battery_time_to_empty(self):
+        """ Get battery time to empty in minutes. """
+        value = api.DevGetBatteryTimeToEmpty(self._handle)
+        library.check_last_status_raise_on_error()
+        return value
+
+    def _get_battery_time_to_full(self):
+        """ Get battery time to full in minutes. """
+        value = api.DevGetBatteryTimeToFull(self._handle)
+        library.check_last_status_raise_on_error()
+        return value
+
+    def _get_is_battery_charger_connected(self):
+        """ Check whether the battery charger is connected. """
+        value = api.DevIsBatteryChargerConnected(self._handle)
+        library.check_last_status_raise_on_error()
+        return value != BOOL8_FALSE
+
+    def _get_is_battery_charging(self):
+        """ Check whether the battery is charging. """
+        value = api.DevIsBatteryCharging(self._handle)
+        library.check_last_status_raise_on_error()
+        return value != BOOL8_FALSE
+
+    def _get_is_battery_broken(self):
+        """ Check whether the battery is broken. """
+        value = api.DevIsBatteryBroken(self._handle)
+        library.check_last_status_raise_on_error()
+        return value != BOOL8_FALSE
+
     def set_callback_removed(self, callback, data):
         """ Set a callback function which is called when the device is removed.
 
@@ -141,11 +195,20 @@ class Device(Object):
     calibration_date = property(_get_calibration_date)
     calibration_token = property(_get_calibration_token)
     serial_number = property(_get_serial_number)
+    ipv4_address = property(_get_ipv4_address)
+    ip_port = property(_get_ip_port)
     product_id = property(_get_product_id)
     vendor_id = property(_get_vendor_id)
     type = property(_get_type)
     name = property(_get_name)
     name_short = property(_get_name_short)
     name_shortest = property(_get_name_shortest)
+    has_battery = property(_get_has_battery)
+    battery_charge = property(_get_battery_charge)
+    battery_time_to_empty = property(_get_battery_time_to_empty)
+    battery_time_to_full = property(_get_battery_time_to_full)
+    is_battery_charger_connected = property(_get_is_battery_charger_connected)
+    is_battery_charging = property(_get_is_battery_charging)
+    is_battery_broken = property(_get_is_battery_broken)
     trigger_inputs = property(_get_trigger_inputs)
     trigger_outputs = property(_get_trigger_outputs)

@@ -573,7 +573,7 @@ class Oscilloscope(Device):
     def verify_trigger_time_out(self, time_out):
         """ Verify if a required trigger time out can be set, without actually setting the hardware itself.
 
-        :param time_out:
+        :param time_out: The required trigger time out in seconds, or #TO_INFINITY.
         :returns: The trigger time out that would have been set, if ScpSetTriggerTimeOut() was used.
         """
         result = api.ScpVerifyTriggerTimeOut(self._handle, time_out)

@@ -1,4 +1,4 @@
-# GeneratorGatedBurst.py - for LibTiePie 0.5+
+# GeneratorGatedBurst.py
 #
 # This example generates a 10 kHz square waveform, 10 Vpp when the external trigger input is active.
 #
@@ -11,6 +11,9 @@ from printinfo import *
 
 # Print library info:
 print_library_info()
+
+# Enable network search:
+libtiepie.network.auto_detect_enabled = True
 
 # Search for devices:
 libtiepie.device_list.update()

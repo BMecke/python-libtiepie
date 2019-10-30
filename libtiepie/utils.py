@@ -35,6 +35,10 @@ def is_string(obj):
         return isinstance(obj, str)
 
 
+def ipv4_str(value):
+    return socket.inet_ntoa(struct.pack("!I", value))
+
+
 def auto_resolution_mode_str(value):
     result = []
     for i in range(ARN_COUNT):
@@ -143,6 +147,14 @@ def measure_mode_str(value):
             result.append(MEASURE_MODES[bit])
 
     return ', '.join(result)
+
+
+def server_error_str(value):
+    return SERVER_ERRORS[value]
+
+
+def server_status_str(value):
+    return SERVER_STATUSS[value]
 
 
 def signal_type_str(value):

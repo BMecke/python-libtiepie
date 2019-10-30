@@ -1,4 +1,4 @@
-# I2CDAC.py - for LibTiePie 0.5+
+# I2CDAC.py
 #
 # This example demonstrates how to use an I2C host supported by LibTiePie.
 # It shows how to control an Analog Devices AD5667 dual 16-bit DAC on I2C address 12.
@@ -29,6 +29,9 @@ AD5667_CMD_REF_SETUP = 0x38
 
 # Print library info:
 print_library_info()
+
+# Enable network search:
+libtiepie.network.auto_detect_enabled = True
 
 # Search for devices:
 libtiepie.device_list.update()

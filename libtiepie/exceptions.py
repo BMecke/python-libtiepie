@@ -209,3 +209,45 @@ class MeasurementRunningError(LibTiePieException):
 
     def __init__(self):
         super(MeasurementRunningError, self).__init__(MeasurementRunningError, 'Measurement running')
+
+
+class InitializationError10001(LibTiePieException):
+    """"""
+
+    def __init__(self):
+        super(InitializationError10001, self).__init__(InitializationError10001, 'Initialization error 10001')
+
+
+class InitializationError10002(LibTiePieException):
+    """"""
+
+    def __init__(self):
+        super(InitializationError10002, self).__init__(InitializationError10002, 'Initialization error 10002')
+
+
+class InitializationError10003(LibTiePieException):
+    """"""
+
+    def __init__(self):
+        super(InitializationError10003, self).__init__(InitializationError10003, 'Initialization error 10003')
+
+
+class InitializationError10004(LibTiePieException):
+    """"""
+
+    def __init__(self):
+        super(InitializationError10004, self).__init__(InitializationError10004, 'Initialization error 10004')
+
+
+class InitializationError10005(LibTiePieException):
+    """"""
+
+    def __init__(self):
+        super(InitializationError10005, self).__init__(InitializationError10005, 'Initialization error 10005')
+
+
+class InitializationError10006(LibTiePieException):
+    """"""
+
+    def __init__(self):
+        super(InitializationError10006, self).__init__(InitializationError10006, 'Initialization error 10006')

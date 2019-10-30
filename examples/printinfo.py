@@ -1,4 +1,4 @@
-# printinfo.py - for LibTiePie 0.6+
+# printinfo.py
 #
 # This file is part of the LibTiePie programming examples.
 #
@@ -6,10 +6,12 @@
 
 from __future__ import print_function
 from libtiepie import *
+from libtiepie.exceptions import LibTiePieException
 from libtiepie.device import Device
 from libtiepie.oscilloscope import Oscilloscope
 from libtiepie.generator import Generator
 from libtiepie.i2chost import I2CHost
+from libtiepie.server import Server
 
 
 def print_library_info():
@@ -40,6 +42,42 @@ def print_device_info(dev, full=True):
         print('  Firmware version          : ' + str(dev.firmware_version))
     except LibTiePieException:
         pass
+    try:
+        print('  IPv4 address              : ' + ipv4_str(dev.ipv4_address))
+    except LibTiePieException:
+        pass
+    try:
+        print('  IP port                   : ' + str(dev.ip_port))
+    except LibTiePieException:
+        pass
+
+    print('  Has battery               : ' + str(dev.has_battery))
+    if dev.has_battery:
+        print('  Battery:')
+        try:
+            print('    Charge                  : ' + str(dev.battery_charge) + ' %')
+        except LibTiePieException:
+            pass
+        try:
+            print('    Time to empty           : ' + str(dev.battery_time_to_empty) + ' minutes')
+        except LibTiePieException:
+            pass
+        try:
+            print('    Time to full            : ' + str(dev.battery_time_to_full) + ' minutes')
+        except LibTiePieException:
+            pass
+        try:
+            print('    Charger connected       : ' + str(dev.is_battery_charger_connected))
+        except LibTiePieException:
+            pass
+        try:
+            print('    Charging                : ' + str(dev.is_battery_charging))
+        except LibTiePieException:
+            pass
+        try:
+            print('    Broken                  : ' + str(dev.is_battery_broken))
+        except LibTiePieException:
+            pass
 
     if full:
         if isinstance(dev, Oscilloscope):
@@ -274,3 +312,20 @@ def print_trigger_outputs_info(dev):
             print('    Events                  : ' + trigger_output_event_str(trout.events))
             print('    Event                   : ' + trigger_output_event_str(trout.event))
             num += 1
+
+
+def print_server_info(srv):
+    if not isinstance(srv, Server):
+        raise
+
+    print('Server:')
+    print('  URL                       : ' + srv.url)
+    print('  Name                      : ' + srv.name)
+    print('  Description               : ' + srv.description)
+    print('  IPv4 address              : ' + ipv4_str(srv.ipv4_address))
+    print('  IP port                   : ' + str(srv.ip_port))
+    print('  Id                        : ' + srv.id)
+    print('  Version                   : ' + str(srv.version) + srv.version_extra)
+    print('  Status                    : ' + server_status_str(srv.status))
+    if srv.last_error != SERVER_ERROR_NONE:
+        print('  Last error                : ' + server_error_str(srv.last_error))

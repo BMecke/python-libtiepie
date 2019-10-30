@@ -1,4 +1,4 @@
-# OscilloscopeConnectionTest.py - for LibTiePie 0.5+
+# OscilloscopeConnectionTest.py
 #
 # This example performs a connection test.
 #
@@ -12,6 +12,9 @@ from printinfo import *
 
 # Print library info:
 print_library_info()
+
+# Enable network search:
+libtiepie.network.auto_detect_enabled = True
 
 # Search for devices:
 libtiepie.device_list.update()
