@@ -15,7 +15,7 @@ To install the Python bindings for LibTiePie and examples on Windows:
    - For 64 bit Python installations use the 64 bit version of LibTiePie
    - For 32 bit Python installations use the 32 bit version of LibTiePie
 2. Install the Python bindings by executing `pip install python-libtiepie`
-3. Download the [python-libtiepie examples](https://www.tiepie.com/download/file/1838).
+3. Download the [python-libtiepie examples](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/TiePie/python-libtiepie/tree/master/examples).
 4. Unpack them using an extractor.
 5. Connect your [USB oscilloscope](https://www.tiepie.com/node/4).
 6. Run an example by executing e.g. `python OscilloscopeBlock.py`
@@ -26,7 +26,7 @@ To install the Python bindings for LibTiePie and examples on Linux:
 
 1. Ensure that [LibTiePie for Linux](https://www.tiepie.com/node/1016) is installed.
 2. Install the Python bindings by executing `sudo pip install python-libtiepie`
-3. Download the [python-libtiepie examples](https://www.tiepie.com/download/file/1838).
+3. Download the [python-libtiepie examples](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/TiePie/python-libtiepie/tree/master/examples).
 4. Unpack them using an extractor, or run in the console using `unzip`.
 5. Connect your [USB oscilloscope](https://www.tiepie.com/node/4).
 6. Run an example by executing e.g. `python OscilloscopeBlock.py`
