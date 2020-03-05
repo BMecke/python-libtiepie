@@ -12,6 +12,7 @@ before_install:
 script:
 - pycodestyle --ignore=E501 .
 - "python setup.py install"
+- "python setup.py sdist"
 deploy:
   provider: pypi
   user: tiepie
