@@ -19,12 +19,13 @@ class Oscilloscope(Device):
     def _get_channels(self):
         return self._channels
 
-    def get_data(self, count=None):
+    def get_data(self, count=None, raw=False):
         """ Get the measurement data for enabled channels.
 
         :param count: Number of samples to read, defaults to all.
+        :param raw: Get raw data.
 
-        :returns: `list` of `array.array`'s with float sample data.
+        :returns: `list` of `array.array`'s with sample data.
         """
         if not self.is_data_ready:
             raise UnsuccessfulError()
@@ -50,11 +51,39 @@ class Oscilloscope(Device):
             result = [None for i in range(channel_count)]
             for i in range(channel_count):
                 if self._active_channels[i]:
-                    result[i] = (c_float * length)()
+                    if raw:
+                        raw_type = self.channels[i].data_raw_type
+                        if raw_type == DATARAWTYPE_INT8:
+                            result[i] = (c_int8 * length)()
+                        elif raw_type == DATARAWTYPE_INT16:
+                            result[i] = (c_int16 * length)()
+                        elif raw_type == DATARAWTYPE_INT32:
+                            result[i] = (c_int32 * length)()
+                        elif raw_type == DATARAWTYPE_INT64:
+                            result[i] = (c_int64 * length)()
+                        elif raw_type == DATARAWTYPE_UINT8:
+                            result[i] = (c_uint8 * length)()
+                        elif raw_type == DATARAWTYPE_UINT16:
+                            result[i] = (c_uint16 * length)()
+                        elif raw_type == DATARAWTYPE_UINT32:
+                            result[i] = (c_uint32 * length)()
+                        elif raw_type == DATARAWTYPE_UINT64:
+                            result[i] = (c_uint64 * length)()
+                        elif raw_type == DATARAWTYPE_FLOAT32:
+                            result[i] = (c_float * length)()
+                        elif raw_type == DATARAWTYPE_FLOAT64:
+                            result[i] = (c_double * length)()
+                        else:
+                            raise UnsuccessfulError()
+                    else:
+                        result[i] = (c_float * length)()
                     api.HlpPointerArraySet(pointers, i, result[i])
 
             # Get the data:
-            api.ScpGetData(self._handle, pointers, channel_count, start, length)
+            if raw:
+                api.ScpGetDataRaw(self._handle, pointers, channel_count, start, length)
+            else:
+                api.ScpGetData(self._handle, pointers, channel_count, start, length)
             library.check_last_status_raise_on_error()
         finally:
             # Delete pointer array:
@@ -63,7 +92,32 @@ class Oscilloscope(Device):
         # Convert to Python array:
         for i in range(channel_count):
             if not result[i] is None:
-                result[i] = array('f', result[i])
+                if raw:
+                    raw_type = self.channels[i].data_raw_type
+                    if raw_type == DATARAWTYPE_INT8:
+                        result[i] = array('b', result[i])
+                    elif raw_type == DATARAWTYPE_INT16:
+                        result[i] = array('h', result[i])
+                    elif raw_type == DATARAWTYPE_INT32:
+                        result[i] = array('l', result[i])
+                    elif raw_type == DATARAWTYPE_INT64:
+                        result[i] = array('q', result[i])
+                    elif raw_type == DATARAWTYPE_UINT8:
+                        result[i] = array('B', result[i])
+                    elif raw_type == DATARAWTYPE_UINT16:
+                        result[i] = array('H', result[i])
+                    elif raw_type == DATARAWTYPE_UINT32:
+                        result[i] = array('L', result[i])
+                    elif raw_type == DATARAWTYPE_UINT64:
+                        result[i] = array('Q', result[i])
+                    elif raw_type == DATARAWTYPE_FLOAT32:
+                        result[i] = array('f', result[i])
+                    elif raw_type == DATARAWTYPE_FLOAT64:
+                        result[i] = array('d', result[i])
+                    else:
+                        raise UnsuccessfulError()
+                else:
+                    result[i] = array('f', result[i])
 
         return result
 
