@@ -2,20 +2,16 @@ import sys
 from ctypes import *
 import platform
 from .types import *
+from ._platform import DLL_PATH, is_windows
 
 
 def load_libtiepie():
     """Load libtiepie library and import all functions."""
 
-    if platform.system() == 'Linux':
-        library_name = 'libtiepie.so.0'
-    elif platform.system() == 'Windows':
+    if is_windows:
         from ctypes.wintypes import HANDLE, HWND, LPARAM, WPARAM
-        library_name = 'libtiepie.dll'
-    else:
-        raise Exception('Can\'t determine library name, unknown platform.system(): ' + platform.system())
 
-    api = CDLL(library_name)
+    api = CDLL(DLL_PATH)
 
     api.LibInit.restype = None
     api.LibInit.argtypes = []

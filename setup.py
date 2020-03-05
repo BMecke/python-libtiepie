@@ -10,6 +10,7 @@ setup(name='python-libtiepie',
       author_email='support@tiepie.nl',
       url='https://github.com/TiePie/python-libtiepie',
       packages=['libtiepie'],
+      package_data={'libtiepie': ['_platform/*/*/*.dll']},
       classifiers=[
           'Development Status :: 5 - Production/Stable',
           'Intended Audience :: Developers',
