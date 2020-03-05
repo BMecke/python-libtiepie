@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from setuptools import setup, find_namespace_packages
+from setuptools import setup, find_packages
 
 setup(name='python-libtiepie',
       version='0.9.2',
@@ -9,7 +9,7 @@ setup(name='python-libtiepie',
       author='TiePie engineering',
       author_email='support@tiepie.nl',
       url='https://github.com/TiePie/python-libtiepie',
-      packages=find_namespace_packages(include=["libtiepie.*"]),
+      packages=find_packages(include=["libtiepie.*"]),
       package_data={'libtiepie': ['_platform/*/*/*.dll']},
       classifiers=[
           'Development Status :: 5 - Production/Stable',
