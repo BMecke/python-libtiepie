@@ -47,6 +47,8 @@ def load_libtiepie():
     api.LstCreateAndOpenCombinedDevice.argtypes = [c_void_p, c_uint32]
     api.LstRemoveDevice.restype = None
     api.LstRemoveDevice.argtypes = [c_uint32]
+    api.LstRemoveDeviceForce.restype = None
+    api.LstRemoveDeviceForce.argtypes = [c_uint32]
     api.LstDevCanOpen.restype = c_uint8
     api.LstDevCanOpen.argtypes = [c_uint32, c_uint32, c_uint32]
     api.LstDevGetProductId.restype = c_uint32

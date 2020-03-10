@@ -67,12 +67,16 @@ class DeviceList(object):
         item = self.create_combined_device(devices)
         return item.open_device(item.types)
 
-    def remove_device(self, serial_number):
+    def remove_device(self, serial_number, force=False):
         """ Remove an instrument from the device list so it can be used by other applications.
 
         :param serial_number: Serial number of the device to remove.
+        :param force: Force the removal, even when the device is currenty opened.
         """
-        api.LstRemoveDevice(serial_number)
+        if force:
+            api.LstRemoveDeviceForce(serial_number)
+        else:
+            api.LstRemoveDevice(serial_number)
         library.check_last_status_raise_on_error()
 
     def set_callback_device_added(self, callback, data):
