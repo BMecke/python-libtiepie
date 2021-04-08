@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 setup(name='python-libtiepie',
-      version='0.9.6',
+      version='0.9.7',
       description='Python bindings for LibTiePie',
       license='MIT',
       author='TiePie engineering',
