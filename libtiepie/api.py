@@ -1017,14 +1017,4 @@ def load_libtiepie():
     return api
 
 
-if 'sphinx' in sys.modules:
-    class API:
-        def LibInit(self):
-            pass
-
-        def LibExit(self):
-            pass
-
-    api = API()
-else:
-    api = load_libtiepie()
+api = load_libtiepie()
