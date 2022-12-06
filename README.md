@@ -20,8 +20,10 @@ To install the Python bindings for LibTiePie and examples on Windows:
 
 To install the Python bindings for LibTiePie and examples on Linux:
 
-1. Ensure that [LibTiePie for Linux](https://www.tiepie.com/node/1016) is installed.
-2. Install the Python bindings by executing `sudo pip install python-libtiepie`
+1. Copy the udev rules to /etc/udev/rules.d by executing
+```curl -fsSL https://raw.githubusercontent.com/TiePie/python-libtiepie/master/45-tiepie.rules | sudo tee /etc/udev/rules.d/45-tiepie.rules```
+2. Install the Python bindings by executing
+```pip install python-libtiepie```
 3. Download the [python-libtiepie examples](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/TiePie/python-libtiepie/tree/master/examples).
 4. Unpack them using an extractor, or run in the console using `unzip`.
 5. Connect your [USB oscilloscope](https://www.tiepie.com/node/4).
