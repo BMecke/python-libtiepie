@@ -1,3 +1,15 @@
+# ⚠️ Warning: This software is no longer under development⚠️
+
+This is a fork of the no longer available python-libtiepie library from Tiepie Engineering, extended with the libtiepie binaries and udev rules.
+
+To get back to the original version, the project can be reset to the last commit of the manufacturer.
+
+```
+git checkout d47dd20fd2adf67bf41ab541ffb319c4fe502962 
+```
+
+## As an alternative I recommend the actively developed library ["handyscope"](https://github.com/emtpb/handyscope).
+
 # python-libtiepie
 [![PyPI](https://img.shields.io/pypi/v/python-libtiepie.svg)](https://pypi.org/project/python-libtiepie/)
 [![License](https://img.shields.io/github/license/tiepie/python-libtiepie.svg)](LICENSE)
